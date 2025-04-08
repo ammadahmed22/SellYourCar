@@ -218,12 +218,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Submit directly to Google Apps Script
             console.log('Submitting form data:', formData);
             try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbzLiMQQVZnhsl27qSJaDs21Pd9ITZDMiL-nOCKhdiCp2B7ezAPKnWyQVMer6eh_kXdh/exec', {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbytdjCCjpuLz9VgsV2HDUSdB78JuQJxIHwjtfibnyxZp4Ww_Mxr4e40cBTy7m21rm7_/exec', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    mode: 'cors',
                     body: JSON.stringify(formData)
                 });
 
