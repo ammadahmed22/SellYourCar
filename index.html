@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Your Car</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <!-- Placeholder for logo -->
+                <h1>LOGO</h1>
+            </div>
+            <nav class="nav">
+                <!-- Placeholder for navigation -->
+                <p>Contact: (555) 123-4567</p>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="form-section">
+                <h2>Sell Your Car Today!</h2>
+                <p class="subtitle">Fill out the form below and we'll get back to you with our best offer.</p>
+                
+                <form id="carSellForm" class="car-form">
+                    <!-- Personal Information -->
+                    <div class="form-group">
+                        <h3>Personal Information</h3>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="name" class="required">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="email" class="required">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="phone" class="required">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="preferred-contact" class="required">Preferred Contact Method</label>
+                                <select id="preferred-contact" name="preferred-contact" required>
+                                    <option value="">Select preferred contact</option>
+                                    <option value="email">Email</option>
+                                    <option value="phone">Phone</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle Information -->
+                    <div class="form-group">
+                        <h3>Vehicle Information</h3>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="make" class="required">Make</label>
+                                <input type="text" id="make" name="make" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="model" class="required">Model</label>
+                                <input type="text" id="model" name="model" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="year" class="required">Year</label>
+                                <input type="number" id="year" name="year" min="1950" max="2024" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="mileage" class="required">Mileage</label>
+                                <input type="number" id="mileage" name="mileage" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="vin">VIN Number</label>
+                                <input type="text" id="vin" name="vin">
+                            </div>
+                            <div class="form-field">
+                                <label for="price" class="required">Expected Price</label>
+                                <input type="number" id="price" name="price" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Condition Information -->
+                    <div class="form-group">
+                        <h3>Vehicle Condition</h3>
+                        <div class="form-field">
+                            <label for="condition" class="required">Condition</label>
+                            <select id="condition" name="condition" required>
+                                <option value="">Select condition</option>
+                                <option value="excellent">Excellent</option>
+                                <option value="good">Good</option>
+                                <option value="fair">Fair</option>
+                                <option value="poor">Poor</option>
+                            </select>
+                        </div>
+                        <div class="condition-descriptions">
+                            <p><strong>Excellent:</strong> No mechanical issues, minimal wear, no accidents</p>
+                            <p><strong>Good:</strong> Minor wear, well-maintained, possible minor repairs needed</p>
+                            <p><strong>Fair:</strong> Some mechanical issues, visible wear, needs repairs</p>
+                            <p><strong>Poor:</strong> Major mechanical issues, significant damage, extensive repairs needed</p>
+                        </div>
+                    </div>
+
+                    <!-- Location Information -->
+                    <div class="form-group">
+                        <h3>Location Information</h3>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="zipCode" class="required">ZIP Code</label>
+                                <input type="text" id="zipCode" name="zipCode" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="state" class="required">State</label>
+                                <select id="state" name="state" required>
+                                    <option value="">Select State</option>
+                                    <!-- US States will be populated via JavaScript -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="licensePlate">License Plate Number</label>
+                                <input type="text" id="licensePlate" name="licensePlate">
+                                <p class="field-note">Required if VIN is not provided</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ownership Information -->
+                    <div class="form-group">
+                        <h3>Ownership Information</h3>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="liens" class="required">Do you have any money owed or liens on the vehicle?</label>
+                                <select id="liens" name="liens" required>
+                                    <option value="">Select option</option>
+                                    <option value="no">No</option>
+                                    <option value="yes">Yes</option>
+                                </select>
+                            </div>
+                            <div class="form-field" id="lienAmountField">
+                                <label for="lienAmount" class="required">How much is owed?</label>
+                                <input type="number" id="lienAmount" name="lienAmount" min="0" step="0.01">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="title" class="required">Do you have title in hand?</label>
+                                <select id="title" name="title" required>
+                                    <option value="">Select option</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Condition & History -->
+                    <div class="form-group">
+                        <h3>Vehicle History</h3>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="accidents" class="required">Accident History</label>
+                                <select id="accidents" name="accidents" required>
+                                    <option value="">Select option</option>
+                                    <option value="none">No Accidents</option>
+                                    <option value="one">1 Accident</option>
+                                    <option value="multiple">2+ Accidents</option>
+                                </select>
+                            </div>
+                            <div class="form-field">
+                                <label for="roadTrip" class="required">Would you be comfortable taking the vehicle on a 100 mile road trip right now?</label>
+                                <select id="roadTrip" name="roadTrip" required>
+                                    <option value="">Select option</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle Issues -->
+                    <div class="form-group">
+                        <h3>Vehicle Issues</h3>
+                        
+                        <!-- Mechanical & Electrical Issues -->
+                        <div class="issues-section">
+                            <h4>Mechanical & Electrical Issues</h4>
+                            <div class="checkbox-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="issues" value="ac">
+                                    Air Conditioning (Doesn't blow cold air, fan broken, etc.)
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="issues" value="transmission">
+                                    Transmission (Drivetrain issues, shifts poorly, etc.)
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="issues" value="tpms">
+                                    Tire Pressure (Tire pressure light / TPMS)
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="issues" value="electrical">
+                                    Electrical (Airbag / SRS light, dim headlights, etc.)
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="issues" value="no_mechanical">
+                                    No Mechanical Or Electrical Issues
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Engine Issues -->
+                        <div class="issues-section">
+                            <h4>Engine Issues</h4>
+                            <div class="checkbox-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="engine_issues" value="check_engine">
+                                    Check Engine Light (Light visible on dashboard)
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="engine_issues" value="noises">
+                                    Strange Noises (Knocking, clicking, screeching etc.)
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="engine_issues" value="vibration">
+                                    Engine Vibration
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="engine_issues" value="smoke">
+                                    Smoke Or Steam
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="engine_issues" value="other">
+                                    Other Engine Issues (Including needed services or repair)
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="engine_issues" value="no_engine">
+                                    No Engine Issues
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Exterior Damage -->
+                        <div class="issues-section">
+                            <h4>Exterior Damage</h4>
+                            <div class="checkbox-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="exterior_damage" value="minor">
+                                    Minor Damage (Scuffs, scratches, or chips)
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="exterior_damage" value="paint">
+                                    Fading Paint (Visibly dull or rough)
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="exterior_damage" value="dents">
+                                    Dents Or Scrapes
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="exterior_damage" value="rust">
+                                    Rust
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="exterior_damage" value="hail">
+                                    Hail Damage
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="exterior_damage" value="no_exterior">
+                                    No Exterior Damage
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Interior Damage -->
+                        <div class="issues-section">
+                            <h4>Interior Damage</h4>
+                            <div class="checkbox-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="interior_damage" value="stains">
+                                    Noticeable Stains
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="interior_damage" value="tears">
+                                    Rips Or Tears In Seats
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="interior_damage" value="odors">
+                                    Persistent Odors (From pets, smoking, mildew, etc)
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="interior_damage" value="av">
+                                    Damaged A/V Systems (Entertainment, navigation, etc)
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="interior_damage" value="dashboard">
+                                    Damaged Dashboard Or Interior Panels
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="interior_damage" value="no_interior">
+                                    No Interior Damage
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Vehicle Information -->
+                    <div class="form-group">
+                        <h3>Additional Vehicle Information</h3>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="modifications" class="required">Does your vehicle have any modifications?</label>
+                                <select id="modifications" name="modifications" required>
+                                    <option value="">Select option</option>
+                                    <option value="yes">Modifications</option>
+                                    <option value="no">No Modifications</option>
+                                </select>
+                            </div>
+                            <div class="form-field">
+                                <label for="smoked" class="required">Has your vehicle been smoked in?</label>
+                                <select id="smoked" name="smoked" required>
+                                    <option value="">Select option</option>
+                                    <option value="yes">Smoked In</option>
+                                    <option value="no">Not Smoked In</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Photo Upload -->
+                    <div class="form-group">
+                        <h3>Vehicle Photos</h3>
+                        <p class="photo-instruction">Upload photos of your vehicle (Optional but recommended)</p>
+                        <div class="form-field">
+                            <label for="photos">Upload Photos</label>
+                            <input type="file" id="photos" name="photos" multiple accept="image/*">
+                        </div>
+                        <div id="preview" class="photo-preview"></div>
+                    </div>
+
+                    <!-- Additional Notes -->
+                    <div class="form-group">
+                        <h3>Additional Information</h3>
+                        <div class="form-field">
+                            <label for="notes">Additional Notes</label>
+                            <textarea id="notes" name="notes" rows="4"></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </section>
+
+            <!-- Placeholder sections -->
+            <section class="why-us">
+                <h2>Why Sell With Us?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit">
+                        <h3>Quick & Easy Process</h3>
+                        <p>Get an offer within 24 hours. No hassle, no waiting around. We make selling your car simple and straightforward.</p>
+                    </div>
+                    <div class="benefit">
+                        <h3>Best Market Value</h3>
+                        <p>We analyze current market trends to ensure you get the best possible price for your vehicle.</p>
+                    </div>
+                    <div class="benefit">
+                        <h3>Free Evaluation</h3>
+                        <p>Our expert team provides detailed vehicle evaluations at no cost to you.</p>
+                    </div>
+                    <div class="benefit">
+                        <h3>Secure Payment</h3>
+                        <p>Receive your payment securely and quickly once the deal is finalized.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Car Buying Service. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Success Message Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <h2>Thank You!</h2>
+            <p>Your submission has been received. We'll contact you soon with our offer.</p>
+            <button class="close-modal">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
