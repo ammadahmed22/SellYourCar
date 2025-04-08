@@ -217,26 +217,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Submit directly to Google Apps Script
             console.log('Submitting form data:', formData);
-            const response = await fetch('https://script.google.com/macros/s/AKfycby3ZlBdokuVmP3f52xt9wyNyNqXpZ3-9zgO2wQvmC21hSHDH38099MF9bJRllw5XXoJ/exec', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                mode: 'cors', // Required for cross-origin requests
-                body: JSON.stringify(formData)
-            });
+            try {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbzLiMQQVZnhsl27qSJaDs21Pd9ITZDMiL-nOCKhdiCp2B7ezAPKnWyQVMer6eh_kXdh/exec', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    mode: 'cors',
+                    body: JSON.stringify(formData)
+                });
 
-            console.log('Response received:', response);
-            const result = await response.json();
-            console.log('Result:', result);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
 
-            if (result.status === 'success') {
-                // Show success modal
-                modal.style.display = 'flex';
-                form.reset();
-                photoPreview.innerHTML = '';
-            } else {
-                throw new Error(result.message || 'Submission failed');
+                const result = await response.json();
+                console.log('Response:', result);
+
+                if (result.status === 'success') {
+                    // Show success modal
+                    modal.style.display = 'flex';
+                    form.reset();
+                    photoPreview.innerHTML = '';
+                } else {
+                    throw new Error(result.message || 'Submission failed');
+                }
+            } catch (error) {
+                alert('An error occurred: ' + error.message);
             }
         } catch (error) {
             alert('An error occurred: ' + error.message);
