@@ -1,0 +1,41 @@
+{
+    "name": "John Smith",
+    "email": "john.smith@email.com",
+    "phone": "555-123-4567",
+    "preferredContact": "phone",
+    "make": "Toyota",
+    "model": "Camry",
+    "year": "2018",
+    "mileage": "85000",
+    "vin": "1HGCM82633A123456",
+    "price": "12500",
+    "condition": "good",
+    "zipCode": "90210",
+    "state": "CA",
+    "licensePlate": "ABC123",
+    "liens": "yes",
+    "lienAmount": "3500",
+    "title": "yes",
+    "accidents": "one",
+    "roadTrip": "yes",
+    "issues": [
+        "Air Conditioning",
+        "Tire Pressure"
+    ],
+    "engine_issues": [
+        "Check Engine Light",
+        "Strange Noises"
+    ],
+    "exterior_damage": [
+        "Minor Damage",
+        "Fading Paint"
+    ],
+    "interior_damage": [
+        "Noticeable Stains",
+        "Damaged Dashboard Or Interior Panels"
+    ],
+    "modifications": "yes",
+    "smoked": "no",
+    "notes": "The car has aftermarket wheels and a custom stereo system. The AC works but not very cold. Would be a great project car for someone who wants to fix it up.",
+    "images": []
+} 
